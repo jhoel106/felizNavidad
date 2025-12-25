@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navidad Mágica</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <ul class="lightrope">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ul>
+
+    <div class="snow-container" id="snow"></div>
+
+    <header id="countdown-wrapper">
+        <p>Tiempo para Navidad:</p>
+        <div id="countdown">00d 00h 00m 00s</div>
+    </header>
+
+    <main class="main-container">
+        <div id="gift-intro" onclick="openGift()">
+            <div class="gift-box">🎁</div>
+            <h2 class="pulse-text">Toca el regalo, familia...</h2>
+        </div>
+
+        <div id="experience-container" class="hidden">
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <div class="slide active">
+    <span class="emoji-header">🎄</span>
+    <h1>¡Feliz Navidad!</h1>
+        <p>A toda mi hermosa familia, que la paz del hogar sea el mejor regalo esta noche.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">🌟</span>
+        <h2>Nuestros Deseos</h2>
+        <p>Que el nuevo año nos traiga salud, abundancia y muchos momentos juntos.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">🍷</span>
+        <h2>Un Brindis</h2>
+        <p>Brindo por los que estamos y por el lazo que nos une siempre.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">💖</span>
+        <h2>Amor Infinito</h2>
+        <p>No importa la distancia, siempre están en mi corazón.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">🙏</span>
+        <h2>Gratitud</h2>
+        <p>Gracias a la vida por permitirnos compartir un año más rodeados de cariño y comprensión.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">📸</span>
+        <h2>Bellos Recuerdos</h2>
+        <p>Que esta noche sea otra historia hermosa para guardar en nuestro álbum familiar de la vida.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">✨</span>
+        <h2>La Magia Navideña</h2>
+        <p>Que la ilusión de la Navidad nos haga sentir como niños otra vez, llenos de esperanza.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">🍗</span>
+        <h2>Unión en la Mesa</h2>
+        <p>Disfrutemos no solo de la cena, sino de las risas y las anécdotas que nos hacen únicos.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">👵👴</span>
+        <h2>Nuestras Raíces</h2>
+        <p>Honramos hoy nuestras raíces y el legado de amor que nos han enseñado de generación en generación.</p>
+    </div>
+
+    <div class="slide">
+        <span class="emoji-header">🎁</span>
+        <h2>El Mayor Regalo</h2>
+        <p>Al final del día, el mejor regalo no está bajo el árbol, sino sentado a nuestro lado. ¡Los quiero mucho!</p>
+    </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-nav" onclick="changeSlide(-1)">Anterior</button>
+                    <button class="btn-nav" onclick="changeSlide(1)">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="music-control">
+        <button id="music-btn" onclick="toggleMusic()">🔇</button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="musica_fondo.mp3" type="audio/mpeg">
+    </audio>
+    <div id="christmas-announcement" class="hidden-alarm">
+        <div class="announcement-content">
+            <span class="big-emoji">🔔</span>
+            <h1 class="glow-text">¡FELIZ NAVIDAD!</h1>
+            <p>Que la magia de este momento llene sus corazones.</p>
+            <button class="btn-nav" onclick="closeAlarm()">Cerrar</button>
+        </div>
+    </div>
+
+    <audio id="bells-sound">
+        <source src="campanas.mp3" type="audio/mpeg">
+    </audio>
+    <script src="script.js"></script>
+</body>
+</html>

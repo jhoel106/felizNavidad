@@ -1,0 +1,242 @@
+/* 1. VARIABLES GLOBALES */
+:root {
+    --gold: #f39c12;
+    --red: #c0392b;
+    --dark-blue: #0a0f1d;
+    --glass: rgba(255, 255, 255, 0.1);
+    --font-navidad: 'Mountains of Christmas', cursive;
+}
+
+/* 2. REINICIO Y CUERPO */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Quicksand', sans-serif;
+    background: radial-gradient(circle at center, #1a2a6c, #0a0f1d);
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* 3. GUIRNALDA DE LUCES (SUPERIOR) */
+.lightrope {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    z-index: 100; /* Asegura que esté por encima de todo */
+    margin: -15px 0 0 0;
+    padding: 0;
+    pointer-events: none;
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    height: 40px;
+}
+
+.lightrope li {
+    position: relative;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 12px;
+    height: 28px;
+    border-radius: 50%;
+    margin: 15px;
+    top: 15px;
+    background: #00f7ff;
+    box-shadow: 0px 4px 20px 3px #00f7ff;
+    animation-name: flash-1;
+    animation-duration: 2s;
+}
+
+.lightrope li:before {
+    content: "";
+    position: absolute;
+    background: #222;
+    width: 10px;
+    height: 9px;
+    border-radius: 3px;
+    top: -4px;
+    left: 1px;
+}
+
+/* Colores alternados para las luces */
+.lightrope li:nth-child(2n+1) { background: #ffff00; box-shadow: 0px 4px 20px 3px #ffff00; animation-name: flash-2; animation-duration: 0.4s; }
+.lightrope li:nth-child(4n+2) { background: #ff00ff; box-shadow: 0px 4px 20px 3px #ff00ff; animation-name: flash-3; animation-duration: 1.1s; }
+.lightrope li:nth-child(3n+1) { background: #00ff00; box-shadow: 0px 4px 20px 3px #00ff00; animation-duration: 1.4s; }
+
+/* 4. CONTADOR (COUNTDOWN) */
+#countdown-wrapper {
+    margin-top: 60px; /* Bajado un poco para no chocar con las luces */
+    padding: 10px 25px;
+    background: var(--glass);
+    backdrop-filter: blur(8px);
+    border-radius: 30px;
+    border: 1px solid rgba(255,215,0,0.2);
+    z-index: 5;
+    text-align: center;
+}
+
+#countdown {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* 5. CONTENEDOR PRINCIPAL Y REGALO */
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#gift-intro {
+    text-align: center;
+    cursor: pointer;
+}
+
+.gift-box {
+    font-size: 120px;
+    animation: floating 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255,215,0,0.4));
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.pulse-text {
+    font-family: var(--font-navidad);
+    color: var(--gold);
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+/* 6. SLIDER Y TARJETAS (CARTAS) */
+#experience-container {
+    width: 90%;
+    max-width: 450px;
+    animation: fadeIn 1s ease-in;
+}
+
+.slide {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    border: 1px solid var(--gold);
+    padding: 40px 25px;
+    text-align: center;
+    display: none; /* Se activa con JS */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.slide.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emoji-header { font-size: 60px; margin-bottom: 10px; }
+h1, h2 { font-family: var(--font-navidad); color: var(--gold); margin: 10px 0; }
+p { line-height: 1.6; font-size: 1.1rem; }
+
+/* 7. BOTONES DE NAVEGACIÓN */
+.nav-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-nav {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-nav:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+/* 8. MÚSICA Y UTILIDADES */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#music-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: var(--red);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+#music-btn:hover { transform: scale(1.1); }
+
+.hidden { display: none !important; }
+
+/* 9. KEYFRAMES ANIMACIONES */
+@keyframes flash-1 { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes flash-2 { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+@keyframes flash-3 { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.2; } }
+@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+/* Estilo de la Alarma/Anuncio */
+.hidden-alarm {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 200; /* Por encima de las luces y todo */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.announcement-content {
+    text-align: center;
+    animation: zoomIn 1s cubic-bezier(0.17, 0.89, 0.32, 1.49);
+}
+
+.big-emoji { font-size: 100px; animation: ring 0.5s infinite; display: inline-block; }
+
+.glow-text {
+    font-family: var(--font-navidad);
+    font-size: 4rem;
+    color: var(--gold);
+    text-shadow: 0 0 20px var(--gold), 0 0 40px white;
+}
+
+@keyframes ring {
+    0%, 100% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
